@@ -23,13 +23,12 @@ Output: 0
 
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
-        
-        for i in range(len(nums)):
-            if nums[-1] < target:
+        if nums[-1] < target:
                 return len(nums)
-            elif nums[0] > target:
+        elif nums[0] > target:
                 return 0
-            elif nums[i] == target:
+        for i in range(len(nums)):
+            if nums[i] == target:
                 return i
-            elif nums[i] < target< nums[i+1]:
+            if nums[i] < target< nums[i+1]:
                 return i+1
