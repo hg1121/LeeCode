@@ -1,0 +1,27 @@
+125. Valid Palindrome
+
+Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+
+Note: For the purpose of this problem, we define empty string as valid palindrome.
+
+Example 1:
+
+Input: "A man, a plan, a canal: Panama"
+Output: true
+Example 2:
+
+Input: "race a car"
+Output: false
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        if not s:
+            return True
+        s.replace(" ", "") #remove all whitespace in s
+        s = ''.join(e for e in s if e.isalnum()) #remove all symbol characters in s 
+        s = s.lower()  #convert s into all lowercase
+        for i in range(len(s)):
+            if i != -i-1: 
+                if ord(s[i]) != ord(s[-i-1]):
+                    return False
+        return True
