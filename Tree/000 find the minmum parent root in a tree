@@ -1,0 +1,36 @@
+000 find the minmum parent root in a tree
+
+class Solution:
+    def __init__(self,val):
+        self.val = val
+        self.left = None
+        self.right = None
+        
+    global minvalue
+    minvalue = float('inf')
+    def minparenttree(self,root):
+        if not root :
+            return
+        if not root.left and not root.right:
+            return 
+        global minvalue
+        if root.val < minvalue:
+            if root.left or root.right:
+                minvalue = root.val
+        if root.left:
+            self.minparenttree(root.left)
+        if root.right:
+            self.minparenttree(root.right)
+        return minvalue
+
+root = Solution(4)
+root.left = Solution(7)
+root.right = Solution(6)
+root.left.left = Solution(2)
+root.left.right = Solution(4)
+root.left.right.left = Solution(1)
+root.left.right.right = Solution(1)
+root.right.left = Solution(5)
+root.right.right = Solution(4)
+
+root.minparenttree(root)
