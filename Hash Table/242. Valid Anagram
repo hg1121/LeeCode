@@ -30,3 +30,6 @@ class Solution:
             else:
                 dic[ele] += 1
         return dic
+
+       ### sort ###
+        # return sorted(s) == sorted(t)
