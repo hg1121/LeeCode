@@ -1,0 +1,84 @@
+Given an array of integers nums, sort the array in ascending order.
+
+ 
+
+Example 1:
+
+Input: nums = [5,2,3,1]
+Output: [1,2,3,5]
+Example 2:
+
+Input: nums = [5,1,1,2,0,0]
+Output: [0,0,1,1,2,5]
+ 
+
+Constraints:
+
+1 <= nums.length <= 50000
+-50000 <= nums[i] <= 50000
+
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        ### quick sort
+        self.quickSort(nums, 0 , len(nums)-1)
+        return nums
+    
+    def quickSort(self, nums, low, high):
+        if low < high:
+            pi = self.partition(nums, low, high)
+            self.quickSort(nums, low, pi-1)
+            self.quickSort(nums,pi+1,high)
+        else:
+            return
+        
+    def partition(self,nums, low, high):
+        pivot = nums[high]
+        i = low 
+        for j in range(low, high):
+            if nums[j] <= pivot:
+                nums[i], nums[j] = nums[j], nums[i]
+                i += 1
+        nums[i], nums[high] = nums[high], nums[i]
+        return i
+                
+                
+        ### Merge Sort
+#         if not nums or len(nums) == 1:
+#             return nums
+#         mid = len(nums)  // 2
+#         l = nums[:mid]
+#         r = nums[mid:]
+#         self.sortArray(l)
+#         self.sortArray(r)
+        
+#         i = j = k = 0
+#         while i < len(l) and j < len(r):
+#             if l[i] < r[j]:
+#                 nums[k] = l[i]
+#                 i += 1
+#             else:
+#                 nums[k] = r[j]
+#                 j += 1
+#             k += 1
+#         if i < len(l):
+#             nums[k:] = l[i:]
+#         if j < len(r):
+#             nums[k:] = r[j:]
+#         return nums
+        
+        
+        
+        ###insertion sort  *TLE*
+        # if not nums or len(nums) == 1:
+        #     return nums
+        # i = 1
+        # while i < len(nums):
+        #     j = i
+        #     while j > 0 and nums[j-1] > nums[j]:
+        #         temp = nums[j-1]
+        #         nums[j-1] = nums[j]
+        #         nums[j] = temp
+        #         j -= 1
+        #     i += 1
+        # return nums
+        
